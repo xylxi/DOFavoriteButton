@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         self.view.layer.addSublayer(one)
         
         let cire = CAShapeLayer()
-        cire.bounds = rectB
+        cire.bounds = CGRectMake(0, 0, 50, 50)
         cire.position = CGPoint(x: 50, y: 50)
         //  判断哪个属于内部，内部将被填充
         cire.fillRule = kCAFillRuleEvenOdd
@@ -69,7 +69,9 @@ class ViewController: UIViewController {
         let maskPath = UIBezierPath(rect: rectB)
         //  第二个路径圆
         maskPath.addArcWithCenter(CGPoint(x: 50,y: 50), radius: 10, startAngle: CGFloat(0.0), endAngle: CGFloat(M_PI * 2), clockwise: true)
-        cire.path = maskPath.CGPath
+        /*  第二种方法
+        cire.contents = UIImage(named: "smile")?.CGImage
+        */
         one.mask = cire
     }
 
